@@ -1,0 +1,1278 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>暗黑破坏神4·K - 探索庇护之地</title>
+    <!-- 网站描述 -->
+    <meta name="description" content="暗黑破坏神4玩家社区，提供最新游戏攻略、动态和玩家交流平台。">
+    <!-- 网站关键词 -->
+    <meta name="keywords" content="暗黑破坏神4，游戏，攻略，庇护之地，玩家社区">
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* 全局样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+        }
+
+        :root {
+            --primary-color: #8e2de2; /* 紫色 */
+            --secondary-color: #4a00e0; /* 深紫色 */
+            --accent-color: #e94057; /* 红色 */
+            --dark-color: #1a1a2e;
+            --light-color: #f8f9fa;
+            --gradient-bg: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        }
+
+        body {
+            background-color: var(--light-color);
+            color: var(--dark-color);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--gradient-bg);
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(142, 45, 226, 0.4);
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(142, 45, 226, 0.6);
+        }
+
+        /* 导航栏 */
+        header {
+            background-color: rgba(26, 26, 46, 0.9);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .logo img {
+            height: 40px;
+            margin-right: 10px;
+        }
+
+        .logo h1 {
+            color: white;
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(to right, var(--primary-color), var(--accent-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+        }
+
+        .nav-links li {
+            margin-left: 30px;
+        }
+
+        .nav-links a {
+            color: white;
+            font-weight: 500;
+            position: relative;
+            padding: 5px 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient-bg);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* 英雄区域 */
+        .hero {
+            height: 100vh;
+            background: var(--gradient-bg);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/bltf9ef4fee9c77a1b5/66df937c97d7ebef3679492b/d4-npe_story-launch-trailer_agnostic_960.webp') center/cover;
+            opacity: 0.9;
+            z-index: 0;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            color: white;
+            max-width: 800px;
+        }
+
+        .hero h2 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 800;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 30px;
+            max-width: 600px;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 2px solid white;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        /* 游戏介绍 */
+        .about {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+
+        .section-title h2 {
+            font-size: 36px;
+            color: var(--dark-color);
+            position: relative;
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: var(--gradient-bg);
+        }
+
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 50px;
+        }
+
+        .about-image {
+            flex: 1;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+
+        .about-image img {
+            width: 100%;
+            height: auto;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.05);
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: var(--primary-color);
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        /* 萌新指南 */
+        #newbie-guides {
+            padding: 100px 0;
+            background-color: white;
+        }
+        
+        #newbie-guides .about-content {
+            margin-bottom: 50px;
+        }
+
+        /* 最新动态 */
+        .news {
+            padding: 100px 0;
+            background-color: #f9f9f9;
+        }
+
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .news-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .news-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .news-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .news-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .news-card:hover .news-image img {
+            transform: scale(1.1);
+        }
+
+        .news-info {
+            padding: 20px;
+        }
+
+        .news-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .news-info .news-date {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .news-info p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* 游戏风采 */
+        .gallery {
+            padding: 100px 0;
+            background-color: white;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-item .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        .gallery-item .overlay p {
+            color: white;
+            text-align: center;
+            padding: 0 15px;
+            font-size: 18px;
+            font-weight: 500;
+            transform: translateY(20px);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .overlay p {
+            transform: translateY(0);
+        }
+
+        /* 攻略区 */
+        .guides {
+            padding: 100px 0;
+            background-color: #f9f9f9;
+        }
+
+        .guides-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .guides-tab {
+            padding: 10px 20px;
+            margin: 0 10px;
+            cursor: pointer;
+            border-bottom: 3px solid transparent;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+
+        .guides-tab.active, .guides-tab:hover {
+            color: var(--primary-color);
+            border-bottom-color: var(--primary-color);
+        }
+
+        .guides-content {
+            display: none;
+        }
+
+        .guides-content.active {
+            display: block;
+        }
+
+        .guides-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .guide-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .guide-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .guide-image {
+            height: 200px;
+            overflow: hidden;
+        }
+
+        .guide-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .guide-info {
+            padding: 20px;
+        }
+
+        .guide-info h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+
+        .guide-info .guide-category {
+            color: #888;
+            font-size: 14px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .guide-info p {
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        /* 未来计划 */
+        .roadmap {
+            padding: 100px 0;
+            background-color: #f9f9f9;
+        }
+
+        .roadmap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .roadmap-card {
+            background: white;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .roadmap-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .roadmap-header {
+            background: var(--gradient-bg);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .roadmap-header h3 {
+            font-size: 22px;
+        }
+
+        .roadmap-content {
+            padding: 20px;
+        }
+
+        .roadmap-content p {
+            margin-bottom: 15px;
+            color: #555;
+        }
+
+        .roadmap-content ul {
+            list-style-position: inside;
+            color: #666;
+        }
+
+        .roadmap-content li {
+            margin-bottom: 8px;
+        }
+
+        /* 页脚 */
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            padding: 50px 0 20px;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 20px;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 40px;
+            height: 2px;
+            background: var(--gradient-bg);
+        }
+
+        .footer-column ul li {
+            margin-bottom: 10px;
+        }
+
+        .footer-column ul li a {
+            color: #aaa;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column ul li a:hover {
+            color: var(--gradient-bg);
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #aaa;
+            font-size: 14px;
+        }
+
+        /* 微信公众号二维码 */
+        .wechat-qrcode {
+            display: flex;
+            gap: 20px;
+        }
+
+        .wechat-qrcode-item {
+            text-align: center;
+            width: 120px; /* 设置容器为正方形 */
+        }
+
+        .wechat-qrcode-item img {
+            width: 120px; /* 设置二维码为正方形 */
+            height: 120px; /* 设置二维码为正方形 */
+            background: white;
+            padding: 5px;
+            border-radius: 5px;
+        }
+
+        /* 媒体平台图标 */
+        .social-platforms {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-platforms a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+        }
+
+        .social-platforms a:hover {
+            background: var(--gradient-bg);
+            transform: translateY(-3px);
+        }
+
+        /* 响应式设计 */
+        @media (max-width: 992px) {
+            .about-content {
+                flex-direction: column;
+            }
+            
+            .hero h2 {
+                font-size: 36px;
+            }
+            
+            .hero p {
+                font-size: 18px;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .guides-tabs {
+                flex-wrap: wrap;
+            }
+        }
+
+        /* 动画效果 */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+            opacity: 0;
+        }
+
+        .delay-1 {
+            animation-delay: 0.2s;
+        }
+
+        .delay-2 {
+            animation-delay: 0.4s;
+        }
+
+        .delay-3 {
+            animation-delay: 0.6s;
+        }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0wIDE4Yy00LjQxIDAtOC0zLjU5LTgtOHMzLjU5LTggOC04IDggMy41OSA4IDgtMy41OSA4LTggMy41OSA4LTggOHptMy41LTljLjgzIDAgMS41LS42NyAxLjUtMS41UzE2LjMzIDggMTUuNSA4IDE0IDguNjcgMTQgOC41IDE0LjUgOSAxNS41IDkgNVMyLjUgMS41IDEuNSAxLjV6Ii8+PC9zdmc+" alt="Logo">
+                    <h1>暗黑破坏神4·K</h1>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#about">游戏介绍</a></li>
+                    <li><a href="#roadmap">游戏动态</a></li>
+                    <li><a href="#newbie-guides">萌新指南</a></li>
+                    <li><a href="#news">游戏资讯</a></li>
+                    <li><a href="#gallery">游戏截图</a></li>
+                    <li><a href="#guides">游戏攻略</a></li>
+                    <li><a href="#contact">联系我们</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- 英雄区域 -->
+    <section id="home" class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2 class="fade-in">暗黑破坏神4 - 探索庇护之地</h2>
+                <p class="fade-in delay-1">欢迎来到庇护之地，与无数英雄一起对抗永恒的邪恶。</p>
+                <div class="hero-buttons fade-in delay-2">
+                    <a href="https://us.battle.net/" target="_blank" class="btn">立即下载</a>
+                    <a href="#about" class="btn btn-secondary">了解更多</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 游戏介绍 -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>游戏介绍</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/blt5f22bd97b0297d21/66e886ca44c6f91d945ef50e/d4-npe_developer-showcase-trailer_agnostic_1920.webp" alt="游戏介绍">
+                </div>
+                <div class="about-text">
+                    <h3>暗黑破坏神4</h3>
+                    <p>暗黑破坏神®IV是一款动作角色扮演游戏，玩家将在游戏中探索庇护之地，对抗各种恶魔。</p>
+                    <p>体验沉浸式的开放世界，感受惊心动魄的故事情节，打造属于自己的传奇英雄。游戏拥有丰富的自定义选项和职业系统，每个职业都有独特的技能和玩法。</p>
+                    <p>加入其他冒险者，共同探索随机生成的地下城，完成任务，击败强大的首领，获取史诗装备，成为庇护之地的英雄。</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 未来计划 -->
+    <section id="roadmap" class="roadmap">
+        <div class="container">
+            <div class="section-title">
+                <h2>游戏动态</h2>
+            </div>
+            <div class="roadmap-grid">
+                <div class="roadmap-card">
+                    <div class="roadmap-header">
+                        <h3>最新更新</h3>
+                    </div>
+                    <div class="roadmap-content">
+                        <p>暗黑破坏神4持续带来新的内容和改进。</p>
+                        <ul>
+                            <li>定期发布新内容和活动</li>
+                            <li>平衡游戏机制和职业系统</li>
+                            <li>优化游戏性能和体验</li>
+							<li>增加更多游戏玩法</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="roadmap-card">
+                    <div class="roadmap-header">
+                        <h3>游戏模式</h3>
+                    </div>
+                    <div class="roadmap-content">
+                        <p>多种游戏模式满足不同玩家需求。</p>
+                        <ul>
+                            <li>单人冒险模式</li>
+                            <li>多人合作模式</li>
+                            <li>世界boss挑战</li>
+                            <li>赛季限定内容</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="roadmap-card">
+                    <div class="roadmap-header">
+                        <h3>社区活动</h3>
+                    </div>
+                    <div class="roadmap-content">
+                        <p>加入全球玩家社区，分享你的游戏体验。</p>
+                        <ul>
+                            <li>每周社区挑战</li>
+                            <li>玩家创作内容展示</li>
+                            <li>游戏直播和比赛</li>
+                            <li>官方论坛和社交媒体互动</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 萌新指南 -->
+    <section id="newbie-guides" class="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>萌新指南</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/blt1165b103d0b8abae/67f5aa526ac81721e056f82a/d4-s8-gameplay-trailer-agnostic.png?" alt="新手指南">
+                </div>
+                <div class="about-text">
+                    <h3>新手入门</h3>
+                    <p>欢迎来到庇护之地！这里是为新手准备的入门指南。</p>
+                    <p>1. <strong>创建角色</strong>：选择你喜欢的职业（野蛮人、猎魔人、法师、德鲁伊、圣教军、死灵法师、武僧）</p>
+                    <p>2. <strong>完成新手教程</strong>：学习基本操作和游戏机制</p>
+                    <p>3. <strong>探索世界</strong>：从沃桑小镇出发，探索庇护之地的各个区域</p>
+                    <p>4. <strong>收集装备</strong>：击败怪物，获取装备，提升你的角色能力</p>
+                </div>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://bnetcmsus-a.akamaihd.net/cms/blog_thumbnail/qu/QUYA4H0FADVQ1726179401209.png" alt="进阶指南">
+                </div>
+                <div class="about-text">
+                    <h3>进阶指南</h3>
+                    <p>掌握基础后，进阶指南将帮助你更深入地了解游戏。</p>
+                    <p>1. <strong>技能和构筑</strong>：研究你的职业技能，打造专属技能构筑</p>
+                    <p>2. <strong>装备强化</strong>：了解装备词缀，打造强大装备</p>
+                    <p>3. <strong>地下城挑战</strong>：探索随机生成的地下城，挑战强大首领</p>
+                    <p>4. <strong>赛季内容</strong>：参与赛季活动，获取独特奖励</p>
+                </div>
+            </div>
+            <div class="about-content">
+                <div class="about-image">
+                    <img src="https://bnetcmsus-a.akamaihd.net/cms/blog_thumbnail/l1/L1HO3PNDG42I1748558355584.png" alt="新人指南">
+                </div>
+                <div class="about-text">
+                    <h3>社区指南</h3>
+                    <p>欢迎来到K！这里是为新侠客准备的社区指南。</p>
+                    <p>1. <strong>新手教程</strong>：根据任务完成社区活动，帮助你快速了解社区玩法。</p>
+                    <p>2. <strong>战力辅助</strong>：通过社区活动获取货币，提升辅助属性。</p>
+                    <p>3. <strong>休闲活动</strong>：可以与大家一起玩小游戏，简单休闲，还能结交志同道合的朋友。</p>
+                    <p>4. <strong>副本活动</strong>：与队友协作挑战副本，获得丰厚奖励，快速提升战力。</p>
+                </div>
+        </div>
+    </section>
+	
+    <!-- 最新动态 -->
+    <section id="news" class="news">
+        <div class="container">
+            <div class="section-title">
+                <h2>游戏资讯</h2>
+            </div>
+            <div class="news-grid">
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://bnetcmsus-a.akamaihd.net/cms/blog_header/q1/Q15686IDS8FH1745448109486.jpg?" alt="动态1">
+                    </div>
+                    <div class="news-info">
+                        <span class="news-date">2025年4月29日</span>
+                        <h3>新故事：《所有说谎的人》</h3>
+                        <p>透过全新的短篇故事，揭晓谎言之王彼列重返圣休亚瑞的历程。善用这份知识，准备在4月30日「第8赛季：彼列归来」迎战魔王本人。</p>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://bnetcmsus-a.akamaihd.net/cms/blog_header/yd/YDFYCWMH0XMH1744825212006.png?" alt="动态2">
+                    </div>
+                    <div class="news-info">
+                        <span class="news-date">2025年4月22日</span>
+                        <h3>在「第8赛季：彼列归来」破除欺瞒</h3>
+                        <p>欺瞒的气氛垄罩着整个圣休亚瑞，彼列已然归来，但他真的来了吗？只有谎言之王自己明白。流浪者，务必在「第8赛季：彼列归来」找出真相。</p>
+                    </div>
+                </div>
+                <div class="news-card">
+                    <div class="news-image">
+                        <img src="https://bnetcmsus-a.akamaihd.net/cms/blog_header/6z/6ZXTVEYE6KYN1743724597239.png?" alt="动态3">
+                    </div>
+                    <div class="news-info">
+                        <span class="news-date">2025年4月9日</span>
+                        <h3>《暗黑破坏神IV》2025 年未来规划</h3>
+                        <p>了解2025年未来规划将如何满足你在圣休亚瑞继续屠杀恶魔的欲望。憎恨的时代以《暗黑破坏神IV》上市和莉莉丝的复活为开端，且因墨菲斯托在《憎恨之躯》复苏而得以延续。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 游戏风采 -->
+    <section id="gallery" class="gallery">
+        <div class="container">
+            <div class="section-title">
+                <h2>游戏风采</h2>
+            </div>
+            <div class="gallery-grid">
+                <div class="gallery-item">
+                    <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/blt9083d91c44357a61/66f19f7751e09fb9deb6007b/d4-x1-gameplay-launch-trailer_agnostic_1920x1080.webp" alt="游戏截图1">
+                    <div class="overlay">
+                        <p>憎恨之躯™</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/blt34630057362c83d9/665f8a2f1fedb37de19c2e2f/e54f6acd639dec30c68451d6c8483201d6ccff4b.jpeg?" alt="游戏截图2">
+                    <div class="overlay">
+                        <p>镇探索纳汉图</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/blt3985ad8894100ded/665f8b374fb0d4191b2d86bb/campaign_thumb.png?" alt="游戏截图3">
+                    <div class="overlay">
+                        <p>继续剧情任务</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/blt7ef06cb5ee648c95/665f8b5650e752f2b1e3dad2/mercenaries_thumb.png?" alt="游戏截图4">
+                    <div class="overlay">
+                        <p>全新佣兵</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/blt77af00ce4d682069/665f8b693859ef5f7f37841e/endgameActivity_thumb.png?" alt="游戏截图5">
+                    <div class="overlay">
+                        <p>黑暗堡垒</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/bltb14ef7c6c05c7a3e/66fdbc6dbccb5f3335af752b/d4-x1-base-game-updates-paragon-boards.png?" alt="游戏截图6">
+                    <div class="overlay">
+                        <p>大量基础游戏更新</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/bltbe26a66ceb3a87bd/66fdbc6de9f44e120bcd4f96/d4-x1-instant-rewards-two-pets.png?" alt="游戏截图7">
+                    <div class="overlay">
+                        <p>新宠物</p>
+                    </div>
+                </div>
+                <div class="gallery-item">
+                    <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/bltde88e23b854b02a2/66df937c42eac6816fff23b5/d4-npe_expansive-open-world_960.webp?" alt="游戏截图8">
+                    <div class="overlay">
+                        <p>辽阔的开放世界</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 攻略区 -->
+    <section id="guides" class="guides">
+        <div class="container">
+            <div class="section-title">
+                <h2>游戏攻略</h2>
+            </div>
+            <div class="guides-tabs">
+                <div class="guides-tab active" data-tab="classes">职业攻略</div>
+                <div class="guides-tab" data-tab="equipment">装备攻略</div>				
+                <div class="guides-tab" data-tab="quests">任务攻略</div>
+            </div>
+            
+            <div id="classes" class="guides-content active">
+                <div class="guides-grid">
+                    <div class="guide-card">
+                        <div class="guide-image">
+                            <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/blta36c761ed681b53e/6466b4e113e90763ea6e134d/D4_Story-Class-Trailer-Barbarian_Thumb_global.webp" alt="职业1">
+                        </div>
+                        <div class="guide-info">
+                            <h3>野蛮人</h3>
+                            <p>近战职业，使用蛮力和原始武器进行战斗。擅长使用双手武器进行强力攻击，或装备盾牌进行防御。</p>
+							<h3>技能推荐</h3>
+							<p>狂战士之怒、旋风斩、跳跃攻击、武器投掷</p>
+							<h3>装备推荐</h3>
+							<p>高生命值、高物理防御、高力量属性的装备</p>
+							<h3>玩法技巧</h3>
+							<p>保持近战距离，利用旋风斩清理群敌，狂战士之怒提供持续伤害加成</p>
+                        </div>
+                    </div>
+                    <div class="guide-card">
+                        <div class="guide-image">
+                            <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/bltabd25baaf873f29f/6466b4efe446c34a46126bfa/D4_Story-Class-Trailer-Rogue_Thumb_global.webp" alt="职业2">
+                        </div>
+                        <div class="guide-info">
+                            <h3>游侠</h3>
+                            <p>远程职业，使用弓箭和陷阱进行战斗。擅长使用远程攻击和陷阱控制敌人，灵活性高。</p>
+							<h3>技能推荐</h3>
+							<p>仇恨之雨、困兽之笼、复仇之雨、烟幕</p>
+							<h3>装备推荐</h3>
+							<p>高敏捷、高暴击率、高攻击速度的装备</p>
+							<h3>玩法技巧</h3>
+							<p>保持距离，利用仇恨之雨进行范围攻击，烟幕提供紧急逃生能力</p>
+                        </div>
+                    </div>
+					<div class="guide-card">
+                        <div class="guide-image">
+                            <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/blte14addb12cc20e70/6466b4ef991398659fb66631/D4_Story-Class-Trailer-Sorcerer_Thumb_global.webp" alt="职业3">
+                        </div>
+                        <div class="guide-info">
+                            <h3>巫师</h3>
+                            <p>远程魔法职业，使用各种元素魔法进行攻击。擅长使用冰、火、电等元素造成大量范围伤害。</p>
+							<h3>技能推荐</h3>
+							<p>流星冲击、冰霜新星、电法球、暴风雪</p>
+							<h3>装备推荐</h3>
+							<p>高智力、高法术强度、高法力回复的装备</p>
+							<h3>玩法技巧</h3>
+							<p>利用冰霜新星控制敌人，使用流星冲击和暴风雪进行范围攻击</p>
+                        </div>
+                    </div>
+					<div class="guide-card">
+                        <div class="guide-image">
+                            <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/blt3e58fdc4dbbc5ee2/6466b4e082ac4226f21b9832/D4_Story-Class-Trailer-Druid_Thumb_global.webp" alt="职业4">
+                        </div>
+                        <div class="guide-info">
+                            <h3>德鲁伊</h3>
+                            <p>近战和召唤职业，可以变形为狼或熊，或召唤自然生物作战。拥有强大的自然魔法和召唤能力。</p>
+							<h3>技能推荐</h3>
+							<p>旋风之魄、野性之魂、大地之灵、狂野之嚎</p>
+							<h3>装备推荐</h3>
+							<p>高活力、高防御、高法术强度的装备</p>
+							<h3>玩法技巧</h3>
+							<p>根据不同战斗情况变形为狼或熊，利用旋风之魄进行持续伤害</p>
+                        </div>
+                    </div>
+					<div class="guide-card">
+                        <div class="guide-image">
+                            <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/blt3597e7fcb42efed4/66956aa9c5289537bc610517/Spiritborn_ClassTrailer_NoText_960.webp" alt="职业5">
+                        </div>
+                        <div class="guide-info">
+                            <h3>灵巫</h3>
+                            <p>行动迅速且身手矫健，并将长砍刀、长杖以及长柄武器当做自己身体延伸，凶残地打倒敌人。</p>
+							<h3>技能推荐</h3>
+							<p>猎豹、爪袭、劫掠者、猎杀者</p>
+							<h3>装备推荐</h3>
+							<p>高敏捷、高暴击率、高攻击速度的装备</p>
+							<h3>玩法技巧</h3>
+							<p>引导四个魂灵守护者无与伦比的力量和能力，依状况以最迅捷的方式压制整个战场</p>
+                        </div>
+                    </div>
+					<div class="guide-card">
+                        <div class="guide-image">
+                            <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt77f4425de611b362/blt07284974957fc114/6466b4e0991398659fb6662d/D4_Story-Class-Trailer-Necromancer_Thumb_global.webp" alt="职业6">
+                        </div>
+                        <div class="guide-info">
+                            <h3>死灵法师</h3>
+                            <p>召唤和魔法职业，使用亡灵魔法和召唤骷髅进行战斗。擅长使用亡灵魔法进行远程攻击，同时召唤亡灵协助作战。</p>
+							<h3>技能推荐</h3>
+							<p>骨矛、骷髅召唤、尸爆、生命之息</p>
+							<h3>装备推荐</h3>
+							<p>高智力、高法术强度、高生命值的装备</p>
+							<h3>玩法技巧</h3>
+							<p>利用骷髅召唤建立亡灵军队，骨矛进行远程攻击</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div id="equipment" class="guides-content">
+                <div class="guides-grid">
+                    <div class="guide-card">
+                        <div class="guide-image">
+                            <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blt6fc946f17407fa41/67eb251737a155c4718c67fa/DIA_D4_S8_Web_Assets_gbl_enUS_1000x563_10_GG01.png?" alt="装备1">
+                        </div>
+                        <div class="guide-info">
+                            <h3>装备系统</h3>
+                            <p>暗黑破坏神4的装备系统非常丰富，包括武器、护甲、饰品等多种类型。</p>
+							<h3>装备品质</h3>
+							<p>白色（普通）、蓝色（魔法）、黄色（稀有）、橙色（传奇）、绿色（套装）</p>
+							<h3>装备属性</h3>
+							<p>主要属性（力量、敏捷、智力、活力）、次要属性（生命值、护甲、抗性等）</p>
+							<h3>传奇装备</h3>
+							<p>橙色传奇装备拥有独特的主动或被动效果，能大幅改变职业玩法</p>
+                        </div>
+                    </div>
+                    <div class="guide-card">
+                        <div class="guide-image">
+                            <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/bltfd0e71caa87e0e0e/67f570da1231e9d01f3215f4/s4-s8-boss-power-960x540.png?" alt="装备2">
+                        </div>
+                        <div class="guide-info">
+                            <h3>符文和咒语</h3>
+                            <p>符文和咒语可以增强武器和技能的效果。</p>
+							<h3>符文类型</h3>
+							<p>红色（力量）、蓝色（冷静）、黄色（快速）、绿色（野性）、橙色（神秘）</p>
+							<h3>符文组合</h3>
+							<p>不同符文组合可以产生强大的特效，改变技能表现</p>
+							<h3>咒语书</h3>
+							<p>咒语书可以为武器附加额外的魔法效果，增加战斗多样性</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+            <div id="quests" class="guides-content">
+                <div class="guides-grid">
+                    <div class="guide-card">
+                        <div class="guide-image">
+                            <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/bltee5a8ef4e78badaf/67f5713e41e03a07ce142184/s4-s8-harbinger-960x540.png?" alt="任务1">
+                        </div>
+                        <div class="guide-info">
+                            <h3>主线任务</h3>
+                            <p>主线任务讲述庇护之地的主要故事线，完成后可获得丰厚奖励。</p>
+							<h3>任务奖励</h3>
+							<p>稀有装备、传奇装备、技能点、经验值</p>
+							<h3>任务攻略</h3>
+							<p>按照任务指引完成目标，注意收集隐藏的剧情和物品</p>
+                        </div>
+                        <div class="guide-info">
+                            <h3>支线任务</h3>
+                            <p>支线任务提供额外的故事内容和奖励，帮助玩家更深入了解庇护之地。</p>
+							<h3>任务奖励</h3>
+							<p>魔法装备、稀有装备、材料、经验值</p>
+							<h3>任务攻略</h3>
+							<p>探索地图时留意任务标记，与NPC对话接受任务</p>
+                        </div>
+                    </div>
+                    <div class="guide-card">
+                        <div class="guide-image">
+                            <img src="https://blz-contentstack-images.akamaized.net/v3/assets/blt9c12f249ac15c7ec/blt8b82205f691fabc2/67f571172b4b6d79cb383cc3/s4-s8-boss-farm-960x540.png?" alt="任务2">
+                        </div>
+                        <div class="guide-info">
+                            <h3>地下城任务</h3>
+                            <p>地下城任务要求玩家完成特定的地下城挑战，难度较高但奖励丰厚。</p>
+							<h3>任务奖励</h3>
+							<p>传奇装备、套装装备、材料、经验值</p>
+							<h3>任务攻略</h3>
+							<p>组建团队或单人挑战，根据地下城特点选择合适装备和技能</p>
+                        </div>
+						<div class="guide-info">
+                            <h3>事件任务</h3>
+                            <p>事件任务是随机出现的特殊任务，完成后可获得独特奖励。</p>
+							<h3>任务奖励</h3>
+							<p>稀有装备、材料、事件专属物品</p>
+							<h3>任务攻略</h3>
+							<p>注意地图上的事件提示，快速响应以获得奖励</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+			
+        </div>
+    </section>
+
+    <!-- 页脚 -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-column">
+                    <h3>暗黑破坏神4·K</h3>
+                    <ul>
+                    <li><a href="#home">首页</a></li>
+                    <li><a href="#about">游戏介绍</a></li>
+                    <li><a href="#roadmap">游戏动态</a></li>
+                    <li><a href="#newbie-guides">萌新指南</a></li>
+                    <li><a href="#news">游戏资讯</a></li>
+                    <li><a href="#gallery">游戏截图</a></li>
+                    <li><a href="#guides">游戏攻略</a></li>
+                    <li><a href="#contact">联系我们</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>皇宸</h3>
+                <ul>
+                    <li><a href="https://hc.ihcking.com">皇宸总部</a></li>
+                    <li><a href="https://hcbl.ihcking.com">皇宸部落</a></li>
+                    <li><a href="https://qlgh.ihcking.com">乾龙公会</a></li>
+                    <li><a href="https://qcjz.ihcking.com">卿城家族</a></li>
+                    <li><a href="https://fgsm.ihcking.com">枫谷师门</a></li>
+                    <li><a href="https://xf.ihcking.com">潇府</a></li>
+                    <li><a href="https://yg.ihcking.com">逸阁</a></li>
+                    <li><a href="https://qg.ihcking.com">卿阁</a></li>
+                    <li><a href="https://fg.ihcking.com">枫阁</a></li>
+                </ul>
+                </div>
+				<div class="footer-column">
+                    <h3>暗黑破坏神4</h3>
+                    <ul>
+                        <li><a href="https://www.diablowiki.net/" target="_blank">游戏百科</a></li>
+                        <li><a href="https://us.battle.net/account/" target="_blank">战网账号</a></li>
+                        <li><a href="https://us.battle.net/d4/support/" target="_blank">技术支持</a></li>
+                        <li><a href="https://us.battle.net/legal/agreement/d4/" target="_blank">游戏条款</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h3>联系我们</h3>
+                    <ul>
+                        <li><a href="#"><i class="fab fa-qq"></i> 3010662388</a></li>
+						<li><a href="#"><i class="fab fa-weixin"></i> 3010662388</a></li>
+                        <li><a href="#">📧 hc@ihcking.com</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                <h3>关注我们</h3>
+                <div class="wechat-qrcode">
+                    <div class="wechat-qrcode-item">
+                        <img src="../.././assets/img/xfdyh.jpg" alt="微信公众号1">
+                        <p>皇宸订阅号</p>
+                    </div>
+                    <div class="wechat-qrcode-item">
+                        <img src="../.././assets/img/hcwfh.jpg" alt="微信公众号2">
+                        <p>皇宸服务号</p>
+                    </div>
+                </div>
+                <div class="social-platforms">
+                    <a href="#" title="哔哩哔哩"><i class="fab fa-bilibili"></i>
+                    </a>
+                    <a href="#" title="微博"><i class="fab fa-weibo"></i>
+                    </a>
+                    <a href="#" title="抖音"><i class="fab fa-tiktok"></i>
+                    </a>
+                    <a href="#" title="QQ群"><i class="fab fa-qq"></i>
+                    </a>
+                </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2023 暗黑破坏神·K. 保留所有权利.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 滚动动画
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+            
+            fadeElements.forEach(element => {
+                observer.observe(element);
+            });
+            
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
+            
+            // 导航栏滚动效果
+            window.addEventListener('scroll', function() {
+                const header = document.querySelector('header');
+                if (window.scrollY > 50) {
+                    header.style.backgroundColor = 'rgba(26, 26, 46, 0.95)';
+                    header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.2)';
+                } else {
+                    header.style.backgroundColor = 'rgba(26, 26, 46, 0.9)';
+                    header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                }
+            });
+            
+            // 攻略区选项卡切换
+            const tabs = document.querySelectorAll('.guides-tab');
+            const contents = document.querySelectorAll('.guides-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const tabId = tab.getAttribute('data-tab');
+                    
+                    // 移除所有active类
+                    tabs.forEach(t => t.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+                    
+                    // 添加active类到当前选项卡和内容
+                    tab.classList.add('active');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
