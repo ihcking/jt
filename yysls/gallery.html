@@ -303,6 +303,7 @@
             overflow: hidden;
             box-shadow: 0 8px 25px rgba(0,0,0,.08);
             transition: all .3s ease;
+            cursor: pointer;
         }
         .member-card:hover {
             transform: translateY(-5px);
@@ -328,9 +329,76 @@
             color: #666;
         }
 
+        /* 精彩瞬间视频 */
+        .video-section {
+            margin-bottom: 60px;
+        }
+        .video-tags {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+        }
+        .video-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,.08);
+            transition: all .3s ease;
+        }
+        .video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(142,45,226,.15);
+        }
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: #000;
+            cursor: pointer;
+        }
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .video-play-icon {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 50px;
+            color: white;
+            background: rgba(0,0,0,.3);
+            transition: background .3s ease;
+        }
+        .video-wrapper:hover .video-play-icon {
+            background: rgba(0,0,0,.5);
+        }
+        .video-info {
+            padding: 15px;
+            text-align: center;
+        }
+        .video-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .video-desc {
+            font-size: 13px;
+            color: #666;
+        }
+
         /* 申请加入我们模块样式 */
         #come {
-            margin-top: 160px;
+            margin-top: 50px;
             text-align: center;
             background: linear-gradient(135deg, var(--primary-color), var(--accent-color));
             padding: 60px 0;
@@ -464,6 +532,44 @@
             .nav-links { display: none; }
             .gallery-grid { grid-template-columns: 1fr; }
             .member-cards { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+            .video-grid { grid-template-columns: 1fr; }
+        }
+
+        /* 成员图片模态框样式 */
+        .member-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,.9);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+        .member-modal-content {
+            position: relative;
+            max-width: 90%;
+            max-height: 90%;
+            text-align: center;
+        }
+        .member-modal img {
+            max-width: 100%;
+            max-height: 80vh;
+            border-radius: 10px;
+        }
+        .member-modal-info {
+            color: white;
+            margin-top: 20px;
+        }
+        .member-modal-info h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .member-modal-info p {
+            font-size: 16px;
+            opacity: 0.9;
         }
     </style>
 </head>
@@ -612,8 +718,8 @@
                         <div class="member-info">
                             <div class="member-name">剑影流风</div>
                             <div class="member-role">
-							<p><strong>流派</strong>：牵丝·霖 <br>
-							<p><strong>造诣</strong>：3.1082</p></div>
+                            <p><strong>流派</strong>：牵丝·霖 <br>
+                            <p><strong>造诣</strong>：3.1082</p></div>
                         </div>
                     </div>
                     <div class="member-card" data-member="healer">
@@ -621,8 +727,8 @@
                         <div class="member-info">
                             <div class="member-name">春风化雨</div>
                             <div class="member-role">
-							<p><strong>流派</strong>：牵丝·霖 <br>
-							<p><strong>造诣</strong>：3.1082</p></div>
+                            <p><strong>流派</strong>：牵丝·霖 <br>
+                            <p><strong>造诣</strong>：3.1082</p></div>
                         </div>
                     </div>
                     <div class="member-card" data-member="tank">
@@ -630,8 +736,8 @@
                         <div class="member-info">
                             <div class="member-name">不动如山</div>
                             <div class="member-role">
-							<p><strong>流派</strong>：牵丝·霖 <br>
-							<p><strong>造诣</strong>：3.1082</p></div>
+                            <p><strong>流派</strong>：牵丝·霖 <br>
+                            <p><strong>造诣</strong>：3.1082</p></div>
                         </div>
                     </div>
                     <div class="member-card" data-member="life">
@@ -639,8 +745,8 @@
                         <div class="member-info">
                             <div class="member-name">匠心独运</div>
                            <div class="member-role">
-							<p><strong>流派</strong>：牵丝·霖 <br>
-							<p><strong>造诣</strong>：3.1082</p></div>
+                            <p><strong>流派</strong>：牵丝·霖 <br>
+                            <p><strong>造诣</strong>：3.1082</p></div>
                         </div>
                     </div>
                     <div class="member-card" data-member="life">
@@ -648,8 +754,8 @@
                         <div class="member-info">
                             <div class="member-name">运筹帷幄</div>
                            <div class="member-role">
-							<p><strong>流派</strong>：牵丝·霖 <br>
-							<p><strong>造诣</strong>：3.1082</p></div>
+                            <p><strong>流派</strong>：牵丝·霖 <br>
+                            <p><strong>造诣</strong>：3.1082</p></div>
                         </div>
                     </div>
                     <div class="member-card" data-member="life">
@@ -657,8 +763,63 @@
                         <div class="member-info">
                             <div class="member-name">纵横沙场</div>
                            <div class="member-role">
-							<p><strong>流派</strong>：牵丝·霖 <br>
-							<p><strong>造诣</strong>：3.1082</p></div>
+                            <p><strong>流派</strong>：牵丝·霖 <br>
+                            <p><strong>造诣</strong>：3.1082</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 精彩瞬间视频 -->
+            <div class="video-section fade-in delay-3">
+                <div class="section-title"><h2>精彩视频</h2></div>
+                <div class="video-tags" id="videoTags">
+                    <div class="tag active" data-video="all">全部</div>
+                    <div class="tag" data-video="dungeon">副本</div>
+                    <div class="tag" data-video="pvp">竞技</div>
+                    <div class="tag" data-video="casual">休闲</div>
+                    <div class="tag" data-video="official">官方</div>
+                </div>
+                <div class="video-grid" id="videoGrid">
+                    <!-- 示例视频 -->
+                    <div class="video-item" data-video="dungeon">
+                        <div class="video-wrapper">
+                            <video src="https://yysls.v.netease.com/pc/fab/20250721/intro.mp4" muted loop></video>
+                            <div class="video-play-icon"><i class="fas fa-play-circle"></i></div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">团本首杀实录</div>
+                            <div class="video-desc">全团默契配合，极限输出</div>
+                        </div>
+                    </div>
+                    <div class="video-item" data-video="pvp">
+                        <div class="video-wrapper">
+                            <video src="https://yysls.v.netease.com/pc/fab/20250721/intro.mp4" muted loop></video>
+                            <div class="video-play-icon"><i class="fas fa-play-circle"></i></div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">竞技场3v3精华</div>
+                            <div class="video-desc">反杀连招，瞬间翻盘</div>
+                        </div>
+                    </div>
+                    <div class="video-item" data-video="casual">
+                        <div class="video-wrapper">
+                            <video src="https://yysls.v.netease.com/pc/fab/20250721/intro.mp4" muted loop></video>
+                            <div class="video-play-icon"><i class="fas fa-play-circle"></i></div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">休闲养老日常</div>
+                            <div class="video-desc">钓鱼+挖宝+拍照</div>
+                        </div>
+                    </div>
+                    <div class="video-item" data-video="official">
+                        <div class="video-wrapper">
+                            <video src="https://yysls.v.netease.com/pc/fab/20250721/intro.mp4" muted loop></video>
+                            <div class="video-play-icon"><i class="fas fa-play-circle"></i></div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">官方资料片CG</div>
+                            <div class="video-desc">全新门派登场</div>
                         </div>
                     </div>
                 </div>
@@ -842,6 +1003,72 @@
                 `;
                 modal.addEventListener('click', () => document.body.removeChild(modal));
                 document.body.appendChild(modal);
+            });
+        });
+
+        // 成员图片点击放大功能（简化版，移除翻页和退出功能）
+        document.querySelectorAll('.member-card').forEach(card => {
+            card.addEventListener('click', () => {
+                const img = card.querySelector('img').src;
+                const name = card.querySelector('.member-name').textContent;
+                const role = card.querySelector('.member-role').innerHTML;
+
+                const modal = document.createElement('div');
+                modal.className = 'member-modal';
+                modal.innerHTML = `
+                    <div class="member-modal-content">
+                        <img src="${img}" alt="${name}">
+                        <div class="member-modal-info">
+                            <h3>${name}</h3>
+                            <div>${role}</div>
+                        </div>
+                    </div>
+                `;
+
+                // 点击模态框背景关闭
+                modal.addEventListener('click', () => {
+                    document.body.removeChild(modal);
+                });
+
+                document.body.appendChild(modal);
+            });
+        });
+
+        // ============== 精彩视频 分类 ==============
+        const videoTags = document.querySelectorAll('.video-tags .tag');
+        const videoItems = document.querySelectorAll('.video-item');
+        videoTags.forEach(tag => {
+            tag.addEventListener('click', () => {
+                videoTags.forEach(t => t.classList.remove('active'));
+                tag.classList.add('active');
+                const category = tag.dataset.video;
+                videoItems.forEach(item => {
+                    if (category === 'all' || item.dataset.video === category) {
+                        item.style.display = 'block';
+                        setTimeout(() => item.style.opacity = '1', 100);
+                    } else {
+                        item.style.opacity = '0';
+                        setTimeout(() => item.style.display = 'none', 300);
+                    }
+                });
+            });
+        });
+
+        // ============== 视频播放 ==============
+        videoItems.forEach(item => {
+            const wrapper = item.querySelector('.video-wrapper');
+            const video = item.querySelector('video');
+            wrapper.addEventListener('click', () => {
+                videoItems.forEach(v => {
+                    if (v !== item) v.querySelector('video').pause();
+                });
+                video.play();
+                video.setAttribute('controls', 'true');
+                wrapper.querySelector('.video-play-icon').style.display = 'none';
+            });
+            video.addEventListener('ended', () => {
+                video.removeAttribute('controls');
+                wrapper.querySelector('.video-play-icon').style.display = 'flex';
             });
         });
     </script>
