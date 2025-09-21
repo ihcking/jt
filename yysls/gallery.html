@@ -235,6 +235,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 25px;
+            margin-bottom: 30px;
         }
         .gallery-item {
             position: relative;
@@ -296,6 +297,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
             gap: 25px;
+            margin-bottom: 30px;
         }
         .member-card {
             background: #fff;
@@ -344,6 +346,7 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
             gap: 25px;
+            margin-bottom: 30px;
         }
         .video-item {
             background: white;
@@ -527,12 +530,68 @@
         .delay-2 { animation-delay: .4s; }
         .delay-3 { animation-delay: .6s; }
 
+        /* 分页控件样式 */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .pagination-btn {
+            padding: 8px 16px;
+            background: rgba(142, 45, 226, .1);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+        .pagination-btn:hover:not(:disabled) {
+            background: var(--gradient-bg);
+            color: white;
+        }
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .pagination-pages {
+            display: flex;
+            gap: 5px;
+        }
+        .pagination-page {
+            padding: 8px 12px;
+            background: rgba(142, 45, 226, .1);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+        .pagination-page.active {
+            background: var(--gradient-bg);
+            color: white;
+        }
+        .pagination-info {
+            margin-left: 15px;
+            font-size: 14px;
+            color: #666;
+        }
+
         /* 响应 */
         @media (max-width: 768px) {
             .nav-links { display: none; }
             .gallery-grid { grid-template-columns: 1fr; }
             .member-cards { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
             .video-grid { grid-template-columns: 1fr; }
+            .pagination {
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+            .pagination-info {
+                width: 100%;
+                text-align: center;
+                margin-left: 0;
+                margin-top: 10px;
+            }
         }
 
         /* 成员图片模态框样式 */
@@ -696,6 +755,57 @@
                             <div class="gallery-desc">一起泡澡</div>
                         </div>
                     </div>
+                    <!-- 更多示例项目 -->
+                    <div class="gallery-item" data-category="output">
+                        <img src="https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="风景照">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">美丽风景</div>
+                            <div class="gallery-desc">游戏中的绝美风景</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="healer">
+                        <img src="https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="社员瞬间">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">社员合影</div>
+                            <div class="gallery-desc">欢乐的社员时光</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="tank">
+                        <img src="https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="活动瞬间">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">百业活动</div>
+                            <div class="gallery-desc">精彩的活动瞬间</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="life">
+                        <img src="https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="副本瞬间">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">团队副本</div>
+                            <div class="gallery-desc">挑战高难度副本</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="command">
+                        <img src="https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="休闲瞬间">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">休闲时光</div>
+                            <div class="gallery-desc">轻松的游戏时刻</div>
+                        </div>
+                    </div>
+                    <div class="gallery-item" data-category="pvp">
+                        <img src="https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="竞技瞬间">
+                        <div class="gallery-overlay">
+                            <div class="gallery-title">竞技对决</div>
+                            <div class="gallery-desc">激烈的PVP战斗</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 分页控件 -->
+                <div class="pagination" id="galleryPagination">
+                    <button class="pagination-btn" id="galleryPrev">上一页</button>
+                    <div class="pagination-pages" id="galleryPages"></div>
+                    <button class="pagination-btn" id="galleryNext">下一页</button>
+                    <div class="pagination-info" id="galleryInfo"></div>
                 </div>
             </div>
 
@@ -821,6 +931,51 @@
                             <p><strong>造诣</strong>：3.0502</p></div>
                         </div>
                     </div>
+                    <!-- 更多示例成员 -->
+                    <div class="member-card" data-member="output">
+                        <img src="https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="副本大神">
+                        <div class="member-info">
+                            <div class="member-name">副本专家</div>
+                            <div class="member-role">
+                            <p><strong>流派</strong>：裂石·钧 <br>
+                            <p><strong>造诣</strong>：3.2000</p></div>
+                        </div>
+                    </div>
+                    <div class="member-card" data-member="healer">
+                        <img src="https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="竞技高手">
+                        <div class="member-info">
+                            <div class="member-name">竞技王者</div>
+                            <div class="member-role">
+                            <p><strong>流派</strong>：破竹·风 <br>
+                            <p><strong>造诣</strong>：3.1000</p></div>
+                        </div>
+                    </div>
+                    <div class="member-card" data-member="tank">
+                        <img src="https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="休闲大师">
+                        <div class="member-info">
+                            <div class="member-name">休闲达人</div>
+                            <div class="member-role">
+                            <p><strong>流派</strong>：牵丝·玉 <br>
+                            <p><strong>造诣</strong>：2.9000</p></div>
+                        </div>
+                    </div>
+                    <div class="member-card" data-member="life">
+                        <img src="https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="活跃玩家">
+                        <div class="member-info">
+                            <div class="member-name">活跃之星</div>
+                            <div class="member-role">
+                            <p><strong>流派</strong>：鸣金·虹 <br>
+                            <p><strong>造诣</strong>：2.8000</p></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 分页控件 -->
+                <div class="pagination" id="memberPagination">
+                    <button class="pagination-btn" id="memberPrev">上一页</button>
+                    <div class="pagination-pages" id="memberPages"></div>
+                    <button class="pagination-btn" id="memberNext">下一页</button>
+                    <div class="pagination-info" id="memberInfo"></div>
                 </div>
             </div>
 
@@ -876,6 +1031,65 @@
                             <div class="video-desc">全新门派登场</div>
                         </div>
                     </div>
+                    <!-- 更多示例视频 -->
+                    <div class="video-item" data-video="dungeon">
+                        <div class="video-wrapper">
+                            <video src="https://yysls.v.netease.com/pc/fab/20250721/intro.mp4" muted loop></video>
+                            <div class="video-play-icon"><i class="fas fa-play-circle"></i></div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">副本攻略</div>
+                            <div class="video-desc">高效通关技巧</div>
+                        </div>
+                    </div>
+                    <div class="video-item" data-video="pvp">
+                        <div class="video-wrapper">
+                            <video src="https://yysls.v.netease.com/pc/fab/20250721/intro.mp4" muted loop></video>
+                            <div class="video-play-icon"><i class="fas fa-play-circle"></i></div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">PVP技巧</div>
+                            <div class="video-desc">高手对决解析</div>
+                        </div>
+                    </div>
+                    <div class="video-item" data-video="casual">
+                        <div class="video-wrapper">
+                            <video src="https://yysls.v.netease.com/pc/fab/20250721/intro.mp4" muted loop></video>
+                            <div class="video-play-icon"><i class="fas fa-play-circle"></i></div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">休闲玩法</div>
+                            <div class="video-desc">轻松游戏方式</div>
+                        </div>
+                    </div>
+                    <div class="video-item" data-video="official">
+                        <div class="video-wrapper">
+                            <video src="https://yysls.v.netease.com/pc/fab/20250721/intro.mp4" muted loop></video>
+                            <div class="video-play-icon"><i class="fas fa-play-circle"></i></div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">游戏更新</div>
+                            <div class="video-desc">最新版本内容</div>
+                        </div>
+                    </div>
+                    <div class="video-item" data-video="dungeon">
+                        <div class="video-wrapper">
+                            <video src="https://yysls.v.netease.com/pc/fab/20250721/intro.mp4" muted loop></video>
+                            <div class="video-play-icon"><i class="fas fa-play-circle"></i></div>
+                        </div>
+                        <div class="video-info">
+                            <div class="video-title">团队副本</div>
+                            <div class="video-desc">多人协作挑战</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- 分页控件 -->
+                <div class="pagination" id="videoPagination">
+                    <button class="pagination-btn" id="videoPrev">上一页</button>
+                    <div class="pagination-pages" id="videoPages"></div>
+                    <button class="pagination-btn" id="videoNext">下一页</button>
+                    <div class="pagination-info" id="videoInfo"></div>
                 </div>
             </div>
 
@@ -992,47 +1206,265 @@
                     header.style.boxShadow = '0 2px 20px rgba(0,0,0,.1)';
                 }
             });
+
+            // 初始化分页
+            initPagination();
         });
 
-        // 分类切换逻辑（风采瞬间）
-        const galleryTags = document.querySelectorAll('.category-tags .tag');
-        const galleryItems = document.querySelectorAll('.gallery-item');
-        galleryTags.forEach(tag => {
-            tag.addEventListener('click', () => {
-                galleryTags.forEach(t => t.classList.remove('active'));
-                tag.classList.add('active');
-                const category = tag.dataset.category;
-                galleryItems.forEach(item => {
-                    if (category === 'all' || item.dataset.category.includes(category)) {
-                        item.style.display = 'block';
-                        setTimeout(() => { item.style.opacity = '1'; }, 100);
-                    } else {
-                        item.style.opacity = '0';
-                        setTimeout(() => { item.style.display = 'none'; }, 300);
-                    }
-                });
-            });
-        });
+        // 分页功能
+        function initPagination() {
+            // 配置
+            const paginationConfig = {
+                gallery: {
+                    itemsPerPage: 6,
+                    container: document.getElementById('galleryGrid'),
+                    pagination: document.getElementById('galleryPagination'),
+                    prevBtn: document.getElementById('galleryPrev'),
+                    nextBtn: document.getElementById('galleryNext'),
+                    pagesContainer: document.getElementById('galleryPages'),
+                    infoContainer: document.getElementById('galleryInfo'),
+                    currentPage: 1,
+                    currentCategory: 'all'
+                },
+                member: {
+                    itemsPerPage: 12,
+                    container: document.getElementById('memberCards'),
+                    pagination: document.getElementById('memberPagination'),
+                    prevBtn: document.getElementById('memberPrev'),
+                    nextBtn: document.getElementById('memberNext'),
+                    pagesContainer: document.getElementById('memberPages'),
+                    infoContainer: document.getElementById('memberInfo'),
+                    currentPage: 1,
+                    currentCategory: 'all'
+                },
+                video: {
+                    itemsPerPage: 3,
+                    container: document.getElementById('videoGrid'),
+                    pagination: document.getElementById('videoPagination'),
+                    prevBtn: document.getElementById('videoPrev'),
+                    nextBtn: document.getElementById('videoNext'),
+                    pagesContainer: document.getElementById('videoPages'),
+                    infoContainer: document.getElementById('videoInfo'),
+                    currentPage: 1,
+                    currentCategory: 'all'
+                }
+            };
 
-        // 分类切换逻辑（优秀成员）
-        const memberTags = document.querySelectorAll('.member-tags .tag');
-        const memberCards = document.querySelectorAll('.member-card');
-        memberTags.forEach(tag => {
-            tag.addEventListener('click', () => {
-                memberTags.forEach(t => t.classList.remove('active'));
-                tag.classList.add('active');
-                const member = tag.dataset.member;
-                memberCards.forEach(card => {
-                    if (member === 'all' || card.dataset.member === member) {
-                        card.style.display = 'block';
-                        setTimeout(() => { card.style.opacity = '1'; }, 100);
+            // 初始化每个模块的分页
+            for (const module in paginationConfig) {
+                setupPagination(paginationConfig[module], module);
+            }
+
+            // 分类切换逻辑（风采瞬间）
+            const galleryTags = document.querySelectorAll('.category-tags .tag');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryTags.forEach(tag => {
+                tag.addEventListener('click', () => {
+                    galleryTags.forEach(t => t.classList.remove('active'));
+                    tag.classList.add('active');
+                    const category = tag.dataset.category;
+                    paginationConfig.gallery.currentCategory = category;
+                    paginationConfig.gallery.currentPage = 1;
+                    
+                    // 过滤项目
+                    let filteredItems = [];
+                    if (category === 'all') {
+                        filteredItems = Array.from(galleryItems);
                     } else {
-                        card.style.opacity = '0';
-                        setTimeout(() => { card.style.display = 'none'; }, 300);
+                        filteredItems = Array.from(galleryItems).filter(item => 
+                            item.dataset.category.includes(category)
+                        );
                     }
+                    
+                    // 更新分页
+                    updatePagination(paginationConfig.gallery, filteredItems);
                 });
             });
-        });
+
+            // 分类切换逻辑（优秀成员）
+            const memberTags = document.querySelectorAll('.member-tags .tag');
+            const memberCards = document.querySelectorAll('.member-card');
+            memberTags.forEach(tag => {
+                tag.addEventListener('click', () => {
+                    memberTags.forEach(t => t.classList.remove('active'));
+                    tag.classList.add('active');
+                    const category = tag.dataset.member;
+                    paginationConfig.member.currentCategory = category;
+                    paginationConfig.member.currentPage = 1;
+                    
+                    // 过滤项目
+                    let filteredItems = [];
+                    if (category === 'all') {
+                        filteredItems = Array.from(memberCards);
+                    } else {
+                        filteredItems = Array.from(memberCards).filter(card => 
+                            card.dataset.member === category
+                        );
+                    }
+                    
+                    // 更新分页
+                    updatePagination(paginationConfig.member, filteredItems);
+                });
+            });
+
+            // 分类切换逻辑（精彩视频）
+            const videoTags = document.querySelectorAll('.video-tags .tag');
+            const videoItems = document.querySelectorAll('.video-item');
+            videoTags.forEach(tag => {
+                tag.addEventListener('click', () => {
+                    videoTags.forEach(t => t.classList.remove('active'));
+                    tag.classList.add('active');
+                    const category = tag.dataset.video;
+                    paginationConfig.video.currentCategory = category;
+                    paginationConfig.video.currentPage = 1;
+                    
+                    // 过滤项目
+                    let filteredItems = [];
+                    if (category === 'all') {
+                        filteredItems = Array.from(videoItems);
+                    } else {
+                        filteredItems = Array.from(videoItems).filter(item => 
+                            item.dataset.video === category
+                        );
+                    }
+                    
+                    // 更新分页
+                    updatePagination(paginationConfig.video, filteredItems);
+                });
+            });
+        }
+
+        // 设置分页功能
+        function setupPagination(config, module) {
+            const allItems = Array.from(config.container.children);
+            
+            // 初始显示所有项目
+            updatePagination(config, allItems);
+            
+            // 上一页按钮事件
+            config.prevBtn.addEventListener('click', () => {
+                if (config.currentPage > 1) {
+                    config.currentPage--;
+                    updatePagination(config, getFilteredItems(config, module));
+                }
+            });
+            
+            // 下一页按钮事件
+            config.nextBtn.addEventListener('click', () => {
+                const filteredItems = getFilteredItems(config, module);
+                const totalPages = Math.ceil(filteredItems.length / config.itemsPerPage);
+                
+                if (config.currentPage < totalPages) {
+                    config.currentPage++;
+                    updatePagination(config, filteredItems);
+                }
+            });
+        }
+
+        // 获取过滤后的项目
+        function getFilteredItems(config, module) {
+            let items = [];
+            
+            if (module === 'gallery') {
+                items = Array.from(document.querySelectorAll('.gallery-item'));
+                if (config.currentCategory !== 'all') {
+                    items = items.filter(item => 
+                        item.dataset.category.includes(config.currentCategory)
+                    );
+                }
+            } else if (module === 'member') {
+                items = Array.from(document.querySelectorAll('.member-card'));
+                if (config.currentCategory !== 'all') {
+                    items = items.filter(card => 
+                        card.dataset.member === config.currentCategory
+                    );
+                }
+            } else if (module === 'video') {
+                items = Array.from(document.querySelectorAll('.video-item'));
+                if (config.currentCategory !== 'all') {
+                    items = items.filter(item => 
+                        item.dataset.video === config.currentCategory
+                    );
+                }
+            }
+            
+            return items;
+        }
+
+        // 更新分页显示
+        function updatePagination(config, items) {
+            const totalItems = items.length;
+            const totalPages = Math.ceil(totalItems / config.itemsPerPage);
+            
+            // 确保当前页不超过总页数
+            if (config.currentPage > totalPages && totalPages > 0) {
+                config.currentPage = totalPages;
+            } else if (totalPages === 0) {
+                config.currentPage = 1;
+            }
+            
+            // 隐藏所有项目
+            Array.from(config.container.children).forEach(item => {
+                item.style.display = 'none';
+            });
+            
+            // 显示当前页的项目
+            const startIndex = (config.currentPage - 1) * config.itemsPerPage;
+            const endIndex = Math.min(startIndex + config.itemsPerPage, totalItems);
+            
+            for (let i = startIndex; i < endIndex; i++) {
+                items[i].style.display = 'block';
+                setTimeout(() => { items[i].style.opacity = '1'; }, 100);
+            }
+            
+            // 更新分页控件
+            updatePaginationControls(config, totalPages, totalItems);
+        }
+
+        // 更新分页控件
+        function updatePaginationControls(config, totalPages, totalItems) {
+            // 清空页码按钮
+            config.pagesContainer.innerHTML = '';
+            
+            // 添加上一页/下一页按钮状态
+            config.prevBtn.disabled = config.currentPage === 1;
+            config.nextBtn.disabled = config.currentPage === totalPages || totalPages === 0;
+            
+            // 添加页码按钮
+            const maxVisiblePages = 5;
+            let startPage = Math.max(1, config.currentPage - Math.floor(maxVisiblePages / 2));
+            let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+            
+            if (endPage - startPage + 1 < maxVisiblePages) {
+                startPage = Math.max(1, endPage - maxVisiblePages + 1);
+            }
+            
+            for (let i = startPage; i <= endPage; i++) {
+                const pageBtn = document.createElement('button');
+                pageBtn.className = 'pagination-page';
+                pageBtn.textContent = i;
+                if (i === config.currentPage) {
+                    pageBtn.classList.add('active');
+                }
+                
+                pageBtn.addEventListener('click', () => {
+                    config.currentPage = i;
+                    updatePagination(config, getFilteredItems(config, 
+                        config === paginationConfig.gallery ? 'gallery' : 
+                        config === paginationConfig.member ? 'member' : 'video'
+                    ));
+                });
+                
+                config.pagesContainer.appendChild(pageBtn);
+            }
+            
+            // 更新信息显示
+            const startItem = totalItems === 0 ? 0 : (config.currentPage - 1) * config.itemsPerPage + 1;
+            const endItem = Math.min(config.currentPage * config.itemsPerPage, totalItems);
+            
+            config.infoContainer.textContent = 
+                `显示 ${startItem}-${endItem} 条，共 ${totalItems} 条`;
+        }
 
         // 图片点击放大
         document.querySelectorAll('.gallery-item').forEach(item => {
@@ -1060,7 +1492,7 @@
             });
         });
 
-        // 成员图片点击放大功能（简化版，移除翻页和退出功能）
+        // 成员图片点击放大功能
         document.querySelectorAll('.member-card').forEach(card => {
             card.addEventListener('click', () => {
                 const img = card.querySelector('img').src;
@@ -1088,33 +1520,18 @@
             });
         });
 
-        // ============== 精彩视频 分类 ==============
-        const videoTags = document.querySelectorAll('.video-tags .tag');
-        const videoItems = document.querySelectorAll('.video-item');
-        videoTags.forEach(tag => {
-            tag.addEventListener('click', () => {
-                videoTags.forEach(t => t.classList.remove('active'));
-                tag.classList.add('active');
-                const category = tag.dataset.video;
-                videoItems.forEach(item => {
-                    if (category === 'all' || item.dataset.video === category) {
-                        item.style.display = 'block';
-                        setTimeout(() => item.style.opacity = '1', 100);
-                    } else {
-                        item.style.opacity = '0';
-                        setTimeout(() => item.style.display = 'none', 300);
-                    }
-                });
-            });
-        });
-
-        // ============== 视频播放 ==============
-        videoItems.forEach(item => {
+        // 视频播放功能
+        document.querySelectorAll('.video-item').forEach(item => {
             const wrapper = item.querySelector('.video-wrapper');
             const video = item.querySelector('video');
             wrapper.addEventListener('click', () => {
-                videoItems.forEach(v => {
-                    if (v !== item) v.querySelector('video').pause();
+                document.querySelectorAll('.video-item').forEach(v => {
+                    if (v !== item) {
+                        const vVideo = v.querySelector('video');
+                        vVideo.pause();
+                        vVideo.removeAttribute('controls');
+                        v.querySelector('.video-play-icon').style.display = 'flex';
+                    }
                 });
                 video.play();
                 video.setAttribute('controls', 'true');
