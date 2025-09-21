@@ -3,53 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>聆梦·兮禾 - 侠境攻略</title>
-    <!-- 网站描述 -->
+    <title>聆梦·兮禾 - 攻略心得</title>
     <meta name="description" content="燕云十六声，九梦，澜月，休闲养老百业，欢迎大家！请随意，平时不会打扰，社恐玩家福利！">
-    <!-- 网站关键词 -->
     <meta name="keywords" content="燕云十六声，游戏，手游，端游，页游，九梦，百业，攻略">
-	
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* 全局样式 */
+        :root {
+            --primary-color: #8e2de2;
+            --secondary-color: #4a00e0;
+            --accent-color: #e94057;
+            --dark-color: #1a1a2e;
+            --light-color: #f8f9fa;
+            --gradient-bg: linear-gradient(135deg, var(--primary-color), var(--accent-color));
+        }
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             font-family: 'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
         }
-
-        :root {
-            --primary-color: #8e2de2; /* 紫色 */
-            --secondary-color: #4a00e0; /* 深紫色 */
-            --accent-color: #e94057; /* 红色 */
-            --dark-color: #1a1a2e;
-            --light-color: #f8f9fa;
-            --gradient-bg: linear-gradient(135deg, var(--primary-color), var(--accent-color));
-        }
-
         body {
             background-color: var(--light-color);
             color: var(--dark-color);
             line-height: 1.6;
             overflow-x: hidden;
         }
-
-        a {
-            text-decoration: none;
-            color: inherit;
-        }
-
-        ul {
-            list-style: none;
-        }
-
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
         .container {
             max-width: 1200px;
             margin: 0 auto;
             padding: 0 20px;
         }
-
         .btn {
             display: inline-block;
             padding: 12px 24px;
@@ -59,43 +44,38 @@
             border-radius: 30px;
             font-weight: bold;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(142, 45, 226, 0.4);
+            transition: all .3s ease;
+            box-shadow: 0 4px 15px rgba(142, 45, 226, .4);
         }
-
         .btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(142, 45, 226, 0.6);
+            box-shadow: 0 8px 20px rgba(142, 45, 226, .6);
         }
 
         /* 导航栏 */
         header {
-            background-color: rgba(26, 26, 46, 0.9);
+            background-color: rgba(26, 26, 46, .9);
             position: fixed;
             width: 100%;
             top: 0;
             z-index: 1000;
             backdrop-filter: blur(10px);
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, .1);
         }
-
         nav {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 20px 0;
         }
-
         .logo {
             display: flex;
             align-items: center;
         }
-
         .logo img {
             height: 40px;
             margin-right: 10px;
         }
-
         .logo h1 {
             color: white;
             font-size: 24px;
@@ -104,22 +84,16 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
-
         .nav-links {
             display: flex;
+            gap: 30px;
         }
-
-        .nav-links li {
-            margin-left: 30px;
-        }
-
         .nav-links a {
             color: white;
             font-weight: 500;
             position: relative;
             padding: 5px 0;
         }
-
         .nav-links a::after {
             content: '';
             position: absolute;
@@ -128,9 +102,8 @@
             width: 0;
             height: 2px;
             background: var(--gradient-bg);
-            transition: width 0.3s ease;
+            transition: width .3s ease;
         }
-
         .nav-links a:hover::after {
             width: 100%;
         }
@@ -143,8 +116,8 @@
             align-items: center;
             position: relative;
             overflow: hidden;
+            margin-top: 80px;
         }
-
         .header-banner::before {
             content: '';
             position: absolute;
@@ -153,40 +126,74 @@
             width: 100%;
             height: 100%;
             background: url('https://images.unsplash.com/photo-1516302752625-fcc3c50ae61f?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80') center/cover;
-            opacity: 0.2;
+            opacity: .2;
             z-index: 0;
         }
-
         .header-content {
             position: relative;
             z-index: 1;
             color: white;
             max-width: 800px;
         }
-
         .header-content h2 {
             font-size: 42px;
             margin-bottom: 20px;
             font-weight: 800;
         }
-
         .header-content p {
             font-size: 18px;
             margin-bottom: 30px;
             max-width: 600px;
         }
 
-        /* 招新公告 */
-        .recruitment-section {
-            padding: 100px 0;
+        /* 搜索栏 */
+        .search-section {
+            padding: 40px 0 20px; /* 调整间距 */
+            text-align: center;
+        }
+        .search-box {
+            display: inline-flex;
+            align-items: center;
+            background: white;
+            border-radius: 30px;
+            box-shadow: 0 4px 15px rgba(0,0,0,.1);
+            overflow: hidden;
+            max-width: 600px;
+            width: 100%;
+            position: relative;
+        }
+        .search-box input {
+            flex: 1;
+            border: none;
+            padding: 15px 25px;
+            font-size: 16px;
+            outline: none;
+        }
+        .search-box button {
+            background: var(--gradient-bg);
+            border: none;
+            color: white;
+            padding: 15px 25px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: all .3s ease;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .search-box button:hover {
+            background: var(--accent-color);
+        }
+
+        /* 精彩瞬间视频 */
+        .video-section {
+            padding: 40px 0 80px; /* 调整顶部间距 */
             background-color: white;
         }
-
         .section-title {
             text-align: center;
-            margin-bottom: 60px;
+            margin-bottom: 30px; /* 调整底部间距 */
         }
-
         .section-title h2 {
             font-size: 36px;
             color: var(--dark-color);
@@ -194,7 +201,6 @@
             display: inline-block;
             padding-bottom: 15px;
         }
-
         .section-title h2::after {
             content: '';
             position: absolute;
@@ -205,95 +211,134 @@
             height: 3px;
             background: var(--gradient-bg);
         }
-
-        .recruitment-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .recruitment-content h3 {
-            font-size: 24px;
-            margin-bottom: 20px;
-            color: var(--primary-color);
-        }
-
-        .recruitment-content p {
-            margin-bottom: 20px;
-            color: #555;
-        }
-
-        .recruitment-content ul {
-            margin-bottom: 20px;
-            padding-left: 20px;
-        }
-
-        .recruitment-content li {
-            margin-bottom: 10px;
-            color: #555;
-            position: relative;
-            padding-left: 20px;
-        }
-
-        .recruitment-content li::before {
-            content: '•';
-            position: absolute;
-            left: 0;
-            color: var(--accent-color);
-            font-weight: bold;
-        }
-
-        .warning {
-            background-color: #fff3cd;
-            border-left: 4px solid #ffc107;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
-
-        .warning strong {
-            color: #856404;
-        }
-
-        /* 微信公众号二维码 */
-        .wechat-qrcode {
+        .video-tags {
             display: flex;
-            gap: 20px;
-        }
-
-        .wechat-qrcode-item {
-            text-align: center;
-            width: 120px; /* 设置容器为正方形 */
-        }
-
-        .wechat-qrcode-item img {
-            width: 120px; /* 设置二维码为正方形 */
-            height: 120px; /* 设置二维码为正方形 */
-            background: white;
-            padding: 5px;
-            border-radius: 5px;
-        }
-
-        /* 媒体平台图标 */
-        .social-platforms {
-            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
             gap: 15px;
-            margin-top: 20px;
+            margin-bottom: 30px;
         }
-
-        .social-platforms a {
+        .tag {
+            padding: 10px 20px;
+            background: rgba(142, 45, 226, .1);
+            border: 2px solid transparent;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all .3s ease;
+            font-weight: 500;
+        }
+        .tag:hover,
+        .tag.active {
+            background: var(--gradient-bg);
+            color: white;
+            border-color: var(--primary-color);
+        }
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+        .video-item {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,.08);
+            transition: all .3s ease;
+            opacity: 1;
+            display: block;
+        }
+        .video-item.hidden {
+            display: none;
+        }
+        .video-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 30px rgba(142,45,226,.15);
+        }
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: #000;
+            cursor: pointer;
+        }
+        .video-wrapper video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .video-play-icon {
+            position: absolute;
+            inset: 0;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            transition: all 0.3s ease;
+            font-size: 50px;
+            color: white;
+            background: rgba(0,0,0,.3);
+            transition: background .3s ease;
+        }
+        .video-wrapper:hover .video-play-icon {
+            background: rgba(0,0,0,.5);
+        }
+        .video-info {
+            padding: 15px;
+            text-align: center;
+        }
+        .video-title {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .video-desc {
+            font-size: 13px;
+            color: #666;
         }
 
-        .social-platforms a:hover {
+        /* 分页控件样式 */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 20px;
+        }
+        .pagination-btn {
+            padding: 8px 16px;
+            background: rgba(142, 45, 226, .1);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+        .pagination-btn:hover:not(:disabled) {
             background: var(--gradient-bg);
-            transform: translateY(-3px);
+            color: white;
+        }
+        .pagination-btn:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+        .pagination-pages {
+            display: flex;
+            gap: 5px;
+        }
+        .pagination-page {
+            padding: 8px 12px;
+            background: rgba(142, 45, 226, .1);
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all .3s ease;
+        }
+        .pagination-page.active {
+            background: var(--gradient-bg);
+            color: white;
+        }
+        .pagination-info {
+            margin-left: 15px;
+            font-size: 14px;
+            color: #666;
         }
 
         /* 页脚 */
@@ -302,21 +347,18 @@
             color: white;
             padding: 50px 0 20px;
         }
-
         .footer-content {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 30px;
             margin-bottom: 40px;
         }
-
         .footer-column h3 {
             font-size: 18px;
             margin-bottom: 20px;
             position: relative;
             padding-bottom: 10px;
         }
-
         .footer-column h3::after {
             content: '';
             position: absolute;
@@ -326,72 +368,108 @@
             height: 2px;
             background: var(--gradient-bg);
         }
-
         .footer-column ul li {
             margin-bottom: 10px;
         }
-
         .footer-column ul li a {
             color: #aaa;
-            transition: color 0.3s ease;
+            transition: color .3s ease;
         }
-
         .footer-column ul li a:hover {
             color: var(--gradient-bg);
         }
-
         .footer-bottom {
             text-align: center;
             padding-top: 20px;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            border-top: 1px solid rgba(255,255,255,.1);
             color: #aaa;
             font-size: 14px;
         }
 
-        /* 响应式设计 */
-        @media (max-width: 992px) {
-            .header-content h2 {
-                font-size: 32px;
-            }
-            
-            .header-content p {
-                font-size: 16px;
-            }
+        /* 微信二维码容器 */
+        .wechat-qrcode {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+        }
+        .wechat-qrcode-item {
+            text-align: center;
+            width: 120px;
+        }
+        .wechat-qrcode-item img {
+            width: 120px;
+            height: 120px;
+            background: white;
+            padding: 5px;
+            border-radius: 5px;
+            box-shadow: 0 2px 10px rgba(0,0,0,.1);
+        }
+        .wechat-qrcode-item p {
+            margin-top: 10px;
+            font-size: 12px;
+            color: #ccc;
+        }
+        .social-platforms {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .social-platforms a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,.1);
+            border-radius: 50%;
+            transition: all .3s ease;
+        }
+        .social-platforms a:hover {
+            background: var(--gradient-bg);
+            transform: translateY(-3px);
         }
 
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-        }
-
-        /* 动画效果 */
+        /* 动画 */
         @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in { animation: fadeIn 1s ease forwards; opacity: 0; }
+        .delay-1 { animation-delay: .2s; }
+        .delay-2 { animation-delay: .4s; }
+        .delay-3 { animation-delay: .6s; }
+
+        /* 响应 */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .video-grid { grid-template-columns: 1fr; }
+            .pagination {
+                flex-wrap: wrap;
+                gap: 5px;
             }
-            to {
-                opacity: 1;
-                transform: translateY(0);
+            .pagination-info {
+                width: 100%;
+                text-align: center;
+                margin-left: 0;
+                margin-top: 10px;
+            }
+            .search-box {
+                width: 90%;
             }
         }
-
-        .fade-in {
-            animation: fadeIn 1s ease forwards;
-            opacity: 0;
+        
+        /* 无结果提示 */
+        .no-results {
+            text-align: center;
+            padding: 40px 0;
+            color: #666;
+            display: none;
+            grid-column: 1 / -1;
         }
-
-        .delay-1 {
-            animation-delay: 0.2s;
-        }
-
-        .delay-2 {
-            animation-delay: 0.4s;
-        }
-
-        .delay-3 {
-            animation-delay: 0.6s;
+        .no-results i {
+            font-size: 50px;
+            margin-bottom: 15px;
+            color: #ccc;
         }
     </style>
 </head>
@@ -401,7 +479,7 @@
         <div class="container">
             <nav>
                 <div class="logo">
-                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0wIDE4Yy00LjQxIDAtOC0zLjU5LTgtOHMzLjU5LTggOC04IDggMy41OSA4IDgtMy41OSA4LTggOHptMy41LTljLjgzIDAgMS41LS42NyAxLjUtMS41UzE2LjMzIDggMTUuNSA4IDE0IDguNjcgMTQgOC41IDE0LjUgOSAxNS41IDkgMTVzLjY3IDEuNSAxLjUgMS41em0tNyAwYy44MyAwIDEuNS0uNjcgMS41LTEuNVM5LjMzIDggOC41IDggOCA4LjY3IDggOC41IDggOSA4LjUgOSAxNS41IDkgMTVzLjY3IDEuNSAxLjUgMS41eiIvPjwvc3ZnPg==" alt="Logo">
+                    <img src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNCAyNCIgZmlsbD0id2hpdGUiPjxwYXRoIGQ9Ik0xMiAyQzYuNDggMiAyIDYuNDggMiAxMnM0LjQ4IDEwIDEwIDEwIDEwLTQuNDggMTAtMTBTMTcuNTIgMiAxMiAyem0wIDE4Yy00LjQxIDAtOC0zLjU5LTgtOHMzLjU5LTggOC04IDggMy41OSA4IDgtMy41OSA4LTggOHptMy41LTljLjgzIDAgMS41LS42NyAxLjUtMS41UzE2LjMzIDggMTUuNSA4IDE0IDguNjcgMTQgOC41IDE0LjUgOSAxNS41IDkgMTVzLjY3IDEuNSAxLjUgMS41eiIvPjwvc3ZnPg==" alt="Logo">
                     <h1>聆梦·兮禾</h1>
                 </div>
                 <ul class="nav-links">
@@ -409,113 +487,163 @@
                     <li><a href="events.html">百业活动</a></li>
                     <li><a href="gallery.html">百业风采</a></li>
                     <li><a href="strategy.html">萌新指南</a></li>
-                    <li><a href="sect.html">流派攻略</a></li>
-                    <li><a href="garrison.html">镇守攻略</a></li>
-                    <li><a href="realm.html">试剑攻略</a></li>
-                    <li><a href="realms.html">侠境攻略</a></li>
+                    <li><a href="realms.html">攻略心得</a></li>
                     <li><a href="gallery.html#come">联系我们</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-<!-- 页眉 -->
-<section class="header-banner">
-    <div class="container">
-        <div class="header-content">
-            <h2 class="fade-in">侠境攻略</h2>
-            <p class="fade-in delay-1">聆梦·兮禾 - 侠境攻略</p>
-        </div>
-    </div>
-</section>
-
-<!-- 招新公告 -->
-<section class="recruitment-section">
-    <div class="container">
-        <div class="section-title">
-            <h2>侠境攻略</h2>
-        </div>
-        <div class="recruitment-content">   
-                    <h3>多人首领·镇关吼</h3>
-					<p><strong>视频</strong>：<a href="#">侠境·十人本</a></p>
-                    <p><strong>月隙</strong>：特定技能期间会出现成对的传送门，传送门之间可以互相传送。</p>
-					<ul>
-                        <li>出现传送门标记后，根据处理机制的要求需要引导传送门落下！</li>
-                    </ul>
-                    <p><strong>月焰</strong>：镇关吼跳向场边，向场中明光方向喷射火焰，伤害明光和范围内的玩家。</p>
-					<ul>
-                        <li>避开镇关吼正面，离开扇形区域！</li>
-                    </ul>
-                    <p><strong>月曜星陨</strong>：召唤镇关壁落地，一段时间后爆炸。期间镇关吼不断冲锋，需要引导镇关吼撞碎镇关壁。</p>
-					<ul>
-                        <li>最远处的游侠引导镇关吼冲刺，其他游侠利用传送门加速引导游侠在三块石头间的移动！</li>
-                    </ul>
-					<p><strong>地裂咒</strong>：在镇关吼周围造成伤害，随后点名一位游侠，对其周围游侠造成伤害和击飞，可以卸势处理。</p>
-                    <ul>
-                        <li>近身红圈时先行远离，随后带有红圈的游侠远离人群！</li>
-                    </ul>
-					<p><strong>黑洞</strong>：不断牵引游侠向镇关吼聚集，一段时间后在自身位置处产生极高额伤害。</p>
-					<ul>
-                        <li>将两个传送门和黑洞中心放置成一个直线，让游侠被拉回时可以在两个传送门间移动！</li>
-                    </ul>
-					<p><strong>月冲</strong>：震慑一名游侠，被震慑的游侠被镇关吼撞飞后会受到极高伤害，其他游侠代为卸势可以阻止冲锋行为。</p>
-					<ul>
-                        <li>其他游侠帮助被点名的游侠卸势！</li>
-                    </ul>
-					<p><strong>飞星六连</strong>：召唤六个镇关陨，需要游侠搬离中心明光位置，防止镇关陨自爆波及明光。</p>
-					<ul>
-                        <li>利用月隙，将镇关陨搬离场中，然后打碎！</li>
-                    </ul>
-					<p><strong>碎日追击</strong>：镇关吼在面前造成一次爆炸并后退，随后向明光飞扑，对明光造成伤害。</p>
-                    <ul>
-                        <li>决观察镇关吼扑击方向，并在移动路径上卸势！</li>
-                    </ul>
-					<p><strong>月陨</strong>：挑战的最后阶段，镇关吼化身巨星下坠，而明光撑起向天巨盾，显化真身明光像与游侠共同战斗。游侠需要在月陨倒计时前快速击败镇关吼，否则镇关吼将团灭游侠。</p>
-                    <ul>
-                        <li>利用明光像！</li>
-                    </ul>					
-                <hr><br>
-				
-                    <h3>多人首领·五残</h3>
-					<p><strong>视频</strong>：<a href="#">侠境·十人本</a></p>
-                    <p><strong>同时压制</strong>：一阶段五残两方杀意汇聚于身上，若有一方杀意死亡则另一方杀意伤害巨幅提高。</p>
-					<ul>
-                        <li>尽可能同时击败两方杀意！</li>
-                    </ul>
-                    <p><strong>索命追魂圈</strong>：五残点名三位游侠，先后向他们扔出哭丧棒，哭丧棒落地后扩散攻击游侠，并在落点位置生成持续性伤害区域。</p>
-					<ul>
-                        <li>远离人群，并跳跃躲避扩散环伤害！</li>
-                    </ul>
-                    <p><strong>圣旨到</strong>：五残在场地上召唤两面圣旨，圣旨照耀的区域内天威阵阵，间隔性地使游侠下跪接旨并持续造成伤害。</p>
-					<ul>
-                        <li>注意走位，如果在不合适的时机进入则需要迅速出来！</li>
-                    </ul>
-					<p><strong>飞羽追魂</strong>：五残挥舞翅膀，点名多位游侠，对他们发射羽毛攻击。</p>
-                    <ul>
-                        <li>游侠需要跳跃闪避躲避羽毛攻击，同时引导羽毛的落点位置，使其收回时割破圣旨，即可化解朝廷杀意！</li>
-                    </ul>
-					<p><strong>无常索命</strong>：五残跳到空中，吸引全场游侠，施法结束后对身边的游侠造成巨额伤害。</p>
-					<ul>
-                        <li>在合适的时机进入圣旨范围内触发下跪，即可免除吸引。若无人死于此技能即可化解家族杀意！</li>
-                    </ul>
-					<p><strong>哭丧电网</strong>：五残召唤两组哭丧棒，随后对全场游侠造成多次伤害。</p>
-					<ul>
-                        <li>需要将哭丧棒拿起并远离彼此，使哭丧电网无法形成，即可降低此技能伤害！</li>
-                    </ul>
-					<p><strong>外敌入侵</strong>：五残召唤出乌护杀意，乌护杀意会持续点名场上随机游侠，对其冲锋随后吼叫造成伤害。</p>
-					<ul>
-                        <li>举起哭丧电网用以阻挡乌护杀意，使其破防并将其击杀，即可化解乌护杀意！</li>
-                    </ul>
-					<p><strong>杀意汹涌</strong>：圣旨与黑鸟存在于场上时间越长，杀意愈发汹涌，对游侠的伤害越高。</p>
-                    <ul>
-                        <li>通过各种克制手段打败圣旨与黑鸟！</li>
-                    </ul>					
-                <hr><br>
+    <!-- 页眉 -->
+    <section class="header-banner">
+        <div class="container">
+            <div class="header-content">
+                <h2 class="fade-in">攻略心得</h2>
+                <p class="fade-in delay-1">聆梦·兮禾 - 攻略心得</p>
             </div>
         </div>
     </section>
 
-<!-- 页脚 -->
+    <!-- 精彩瞬间视频 -->
+    <section class="video-section">
+        <div class="container">
+            <div class="section-title">
+                <h2>攻略心得</h2>
+            </div>
+
+            <!-- 搜索栏 -->
+            <div class="search-section">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="搜索视频标题或描述...">
+                    <button onclick="searchVideos()">
+                        <i class="fas fa-search"></i> 搜索
+                    </button>
+                </div>
+            </div>
+
+            <div class="video-tags" id="videoTags">
+                <div class="tag active" data-video="all">全部</div>
+                <div class="tag" data-video="sect">流派攻略</div>
+                <div class="tag" data-video="garrison">镇守攻略</div>
+                <div class="tag" data-video="dungeon">副本攻略</div>
+                <div class="tag" data-video="pvp">竞技攻略</div>
+                <div class="tag" data-video="casual">休闲攻略</div>
+                <div class="tag" data-video="official">经验心得</div>
+            </div>
+            
+            <div class="video-grid" id="videoGrid">
+                <!-- 示例视频 -->
+                <div class="video-item" data-video="pvp">
+                    <div class="video-wrapper">
+                        <video src="https://yysls.v.netease.com/pc/fab/20250721/intro.mp4" muted loop></video>
+                        <div class="video-play-icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">竞技场3v3精华</div>
+                        <div class="video-desc">反杀连招，瞬间翻盘</div>
+                    </div>
+                </div>
+                <div class="video-item" data-video="casual">
+                    <div class="video-wrapper">
+                        <video src="https://yysls.v.netease.com/pc/fab/20250721/intro.mp4" muted loop></video>
+                        <div class="video-play-icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">休闲养老日常</div>
+                        <div class="video-desc">钓鱼+挖宝+拍照</div>
+                    </div>
+                </div>
+                <div class="video-item" data-video="casual">
+                    <div class="video-wrapper">
+                        <video src=".././assets/videos/yysls/dc79f07ce43223bae164d64e781333aa.mp4" muted loop></video>
+                        <div class="video-play-icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">燕云日常一乐</div>
+                        <div class="video-desc">调戏九流门</div>
+                    </div>
+                </div>
+                <div class="video-item" data-video="official">
+                    <div class="video-wrapper">
+                        <video src="https://yysls.v.netease.com/pc/fab/20250721/intro.mp4" muted loop></video>
+                        <div class="video-play-icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">官方资料片CG</div>
+                        <div class="video-desc">全新门派登场</div>
+                    </div>
+                </div>
+                <!-- 更多示例视频 -->
+                <div class="video-item" data-video="dungeon">
+                    <div class="video-wrapper">
+                        <video src="https://yysls.v.netease.com/pc/fab/20250721/intro.mp4" muted loop></video>
+                        <div class="video-play-icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">副本攻略</div>
+                        <div class="video-desc">高效通关技巧</div>
+                    </div>
+                </div>
+                <div class="video-item" data-video="pvp">
+                    <div class="video-wrapper">
+                        <video src="https://yysls.v.netease.com/pc/fab/20250721/intro.mp4" muted loop></video>
+                        <div class="video-play-icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">PVP技巧</div>
+                        <div class="video-desc">高手对决解析</div>
+                    </div>
+                </div>
+                <div class="video-item" data-video="casual">
+                    <div class="video-wrapper">
+                        <video src="https://yysls.v.netease.com/pc/fab/20250721/intro.mp4" muted loop></video>
+                        <div class="video-play-icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">休闲玩法</div>
+                        <div class="video-desc">轻松游戏方式</div>
+                    </div>
+                </div>
+                <div class="video-item" data-video="official">
+                    <div class="video-wrapper">
+                        <video src="https://yysls.v.netease.com/pc/fab/20250721/intro.mp4" muted loop></video>
+                        <div class="video-play-icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">游戏更新</div>
+                        <div class="video-desc">最新版本内容</div>
+                    </div>
+                </div>
+                <div class="video-item" data-video="dungeon">
+                    <div class="video-wrapper">
+                        <video src="https://yysls.v.netease.com/pc/fab/20250721/intro.mp4" muted loop></video>
+                        <div class="video-play-icon"><i class="fas fa-play-circle"></i></div>
+                    </div>
+                    <div class="video-info">
+                        <div class="video-title">团队副本</div>
+                        <div class="video-desc">多人协作挑战</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 无结果提示 -->
+            <div class="no-results" id="noResults">
+                <i class="fas fa-search"></i>
+                <h3>未找到相关视频</h3>
+                <p>请尝试其他关键词或分类</p>
+            </div>
+            
+            <!-- 分页控件 -->
+            <div class="pagination" id="videoPagination">
+                <button class="pagination-btn" id="videoPrev">上一页</button>
+                <div class="pagination-pages" id="videoPages"></div>
+                <button class="pagination-btn" id="videoNext">下一页</button>
+                <div class="pagination-info" id="videoInfo"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 页脚 -->
     <footer id="contact">
         <div class="container">
             <div class="footer-content">
@@ -526,28 +654,25 @@
                     <li><a href="events.html">百业活动</a></li>
                     <li><a href="gallery.html">百业风采</a></li>
                     <li><a href="strategy.html">萌新指南</a></li>
-                    <li><a href="sect.html">流派攻略</a></li>
-                    <li><a href="garrison.html">镇守攻略</a></li>
-                    <li><a href="realm.html">试剑攻略</a></li>
-                    <li><a href="realms.html">侠境攻略</a></li>
+                    <li><a href="realms.html">攻略心得</a></li>
                     <li><a href="gallery.html#come">联系我们</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
                     <h3>皇宸</h3>
-                <ul>
-                    <li><a href="https://hc.ihcking.com">皇宸总部</a></li>
-                    <li><a href="https://hcbl.ihcking.com">皇宸部落</a></li>
-                    <li><a href="https://qlgh.ihcking.com">乾龙公会</a></li>
-                    <li><a href="https://qcjz.ihcking.com">卿城家族</a></li>
-                    <li><a href="https://fgsm.ihcking.com">枫谷师门</a></li>
-                    <li><a href="https://xf.ihcking.com">潇府</a></li>
-                    <li><a href="https://yg.ihcking.com">逸阁</a></li>
-                    <li><a href="https://qg.ihcking.com">卿阁</a></li>
-                    <li><a href="https://fg.ihcking.com">枫阁</a></li>
-                </ul>
+                    <ul>
+                        <li><a href="https://hc.ihcking.com">皇宸总部</a></li>
+                        <li><a href="极光科技">皇宸部落</a></li>
+                        <li><a href="https://qlgh.ihcking.com">乾龙公会</a></li>
+                        <li><a href="https://qcjz.ihcking.com">卿城家族</a></li>
+                        <li><a href="https://fgsm.ihcking.com">枫谷师门</a></li>
+                        <li><a href="https://xf.ihcking.com">潇府</a></li>
+                        <li><a href="https://yg.ihcking.com">逸阁</a></li>
+                        <li><a href="https://qg.ihcking.com">卿阁</a></li>
+                        <li><a href="https://fg.ihcking.com">枫阁</a></li>
+                    </ul>
                 </div>
-				<div class="footer-column">
+                <div class="footer-column">
                     <h3>燕云十六声</h3>
                     <ul>
                         <li><a href="https://www.yysls.cn/index.html" target="_blank">游戏官网</a></li>
@@ -560,32 +685,28 @@
                     <h3>联系我们</h3>
                     <ul>
                         <li><a href="#"><i class="fab fa-qq"></i> 3010662388</a></li>
-						<li><a href="#"><i class="fab fa-weixin"></i> 3010662388</a></li>
+                        <li><a href="#"><i class="fab fa-weixin"></i> 3010662388</a></li>
                         <li><a href="#">📧 hc@ihcking.com</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                <h3>关注我们</h3>
-                <div class="wechat-qrcode">
-                    <div class="wechat-qrcode-item">
-                        <img src=".././assets/img/xfdyh.jpg" alt="微信公众号1">
-                        <p>皇宸订阅号</p>
+                    <h3>关注我们</h3>
+                    <div class="wechat-qrcode">
+                        <div class="wechat-qrcode-item">
+                            <img src=".././assets/img/xfdyh.jpg" alt="皇宸订阅号">
+                            <p>皇宸订阅号</p>
+                        </div>
+                        <div class="wechat-qrcode-item">
+                            <img src=".././assets/img/hcwfh.jpg" alt="皇宸服务号">
+                            <p>皇宸服务号</p>
+                        </div>
                     </div>
-                    <div class="wechat-qrcode-item">
-                        <img src=".././assets/img/hcwfh.jpg" alt="微信公众号2">
-                        <p>皇宸服务号</p>
+                    <div class="social-platforms">
+                        <a href="#" title="哔哩哔哩"><i class="fab fa-bilibili"></i></a>
+                        <a href="#" title="微博"><i class="fab fa-weibo"></i></a>
+                        <a href="#" title="抖音"><i class="fab fa-tiktok"></i></a>
+                        <a href="#" title="QQ群"><i class="fab fa-qq"></i></a>
                     </div>
-                </div>
-                <div class="social-platforms">
-                    <a href="#" title="哔哩哔哩"><i class="fab fa-bilibili"></i>
-                    </a>
-                    <a href="#" title="微博"><i class="fab fa-weibo"></i>
-                    </a>
-                    <a href="#" title="抖音"><i class="fab fa-tiktok"></i>
-                    </a>
-                    <a href="#" title="QQ群"><i class="fab fa-qq"></i>
-                    </a>
-                </div>
                 </div>
             </div>
             <div class="footer-bottom">
@@ -594,64 +715,270 @@
         </div>
     </footer>
 
-<script>
-        // 滚动动画
-        document.addEventListener('DOMContentLoaded', function() {
-            const fadeElements = document.querySelectorAll('.fade-in');
-            
-            const observer = new IntersectionObserver((entries) => {
+    <script>
+        // 全局分页配置
+        const paginationConfig = {
+            video: {
+                itemsPerPage: 9,
+                container: document.getElementById('videoGrid'),
+                pagination: document.getElementById('videoPagination'),
+                prevBtn: document.getElementById('videoPrev'),
+                nextBtn: document.getElementById('videoNext'),
+                pagesContainer: document.getElementById('videoPages'),
+                infoContainer: document.getElementById('videoInfo'),
+                currentPage: 1,
+                currentCategory: 'all',
+                searchTerm: '',
+                noResults: document.getElementById('noResults')
+            }
+        };
+
+        // 通用淡入动画
+        document.addEventListener('DOMContentLoaded', () => {
+            const observer = new IntersectionObserver(entries => {
                 entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = 1;
+                    if (entry.isIntersecting) entry.target.style.opacity = 1;
+                });
+            }, { threshold: .1 });
+            document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+            // 平滑滚动
+            document.querySelectorAll('a[href^="#"]').forEach(a => {
+                a.addEventListener('click', e => {
+                    e.preventDefault();
+                    const target = document.querySelector(a.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
                     }
                 });
-            }, {
-                threshold: 0.1
             });
-            
-            fadeElements.forEach(element => {
-                observer.observe(element);
-            });
-            
-            // 平滑滚动
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function (e) {
-                    e.preventDefault();
-                    
-                    document.querySelector(this.getAttribute('href')).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                });
-            });
-            
-            // 导航栏滚动效果
-            window.addEventListener('scroll', function() {
+
+            // 导航栏滚动变色
+            window.addEventListener('scroll', () => {
                 const header = document.querySelector('header');
                 if (window.scrollY > 50) {
-                    header.style.backgroundColor = 'rgba(26, 26, 46, 0.95)';
-                    header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.2)';
+                    header.style.backgroundColor = 'rgba(26, 26, 46, .95)';
+                    header.style.boxShadow = '0 2px 20px rgba(0,0,0,.2)';
                 } else {
-                    header.style.backgroundColor = 'rgba(26, 26, 46, 0.9)';
-                    header.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+                    header.style.backgroundColor = 'rgba(26, 26, 46, .9)';
+                    header.style.boxShadow = '0 2px 20px rgba(0,0,0,.1)';
+                }
+            });
+
+            // 初始化分页
+            initPagination();
+        });
+
+        // 分页功能
+        function initPagination() {
+            // 初始化视频分页
+            setupPagination(paginationConfig.video, 'video');
+
+            // 分类切换逻辑（精彩视频）
+            const videoTags = document.querySelectorAll('.video-tags .tag');
+            videoTags.forEach(tag => {
+                tag.addEventListener('click', () => {
+                    videoTags.forEach(t => t.classList.remove('active'));
+                    tag.classList.add('active');
+                    const category = tag.dataset.video;
+                    paginationConfig.video.currentCategory = category;
+                    paginationConfig.video.currentPage = 1;
+                    
+                    // 更新分页
+                    updatePagination(paginationConfig.video, 'video');
+                });
+            });
+        }
+
+        // 设置分页功能
+        function setupPagination(config, module) {
+            // 初始显示所有项目
+            updatePagination(config, module);
+            
+            // 上一页按钮事件
+            config.prevBtn.addEventListener('click', () => {
+                if (config.currentPage > 1) {
+                    config.currentPage--;
+                    updatePagination(config, module);
                 }
             });
             
-            // 攻略区选项卡切换
-            const tabs = document.querySelectorAll('.guides-tab');
-            const contents = document.querySelectorAll('.guides-content');
+            // 下一页按钮事件
+            config.nextBtn.addEventListener('click', () => {
+                const filteredItems = getFilteredItems(config, module);
+                const totalPages = Math.ceil(filteredItems.length / config.itemsPerPage);
+                
+                if (config.currentPage < totalPages) {
+                    config.currentPage++;
+                    updatePagination(config, module);
+                }
+            });
+        }
+
+        // 获取过滤后的项目
+        function getFilteredItems(config, module) {
+            let items = [];
+            const allItems = Array.from(config.container.children);
             
-            tabs.forEach(tab => {
-                tab.addEventListener('click', () => {
-                    const tabId = tab.getAttribute('data-tab');
-                    
-                    // 移除所有active类
-                    tabs.forEach(t => t.classList.remove('active'));
-                    contents.forEach(c => c.classList.remove('active'));
-                    
-                    // 添加active类到当前选项卡和内容
-                    tab.classList.add('active');
-                    document.getElementById(tabId).classList.add('active');
+            // 首先根据分类过滤
+            if (config.currentCategory !== 'all') {
+                items = allItems.filter(item => 
+                    item.dataset.video === config.currentCategory
+                );
+            } else {
+                items = allItems;
+            }
+            
+            // 然后根据搜索关键词过滤
+            if (config.searchTerm) {
+                const searchTerm = config.searchTerm.toLowerCase();
+                items = items.filter(item => {
+                    const title = item.querySelector('.video-title').textContent.toLowerCase();
+                    const desc = item.querySelector('.video-desc').textContent.toLowerCase();
+                    return title.includes(searchTerm) || desc.includes(searchTerm);
                 });
+            }
+            
+            return items;
+        }
+
+        // 更新分页显示
+        function updatePagination(config, module) {
+            const filteredItems = getFilteredItems(config, module);
+            const totalItems = filteredItems.length;
+            const totalPages = Math.ceil(totalItems / config.itemsPerPage);
+            
+            // 显示/隐藏无结果提示
+            if (totalItems === 0) {
+                config.noResults.style.display = 'block';
+                config.pagination.style.display = 'none';
+            } else {
+                config.noResults.style.display = 'none';
+                config.pagination.style.display = 'flex';
+            }
+            
+            // 确保当前页不超过总页数
+            if (config.currentPage > totalPages && totalPages > 0) {
+                config.currentPage = totalPages;
+            } else if (totalPages === 0) {
+                config.currentPage = 1;
+            }
+            
+            // 隐藏所有项目
+            Array.from(config.container.children).forEach(item => {
+                item.classList.add('hidden');
+            });
+            
+            // 显示当前页的项目
+            const startIndex = (config.currentPage - 1) * config.itemsPerPage;
+            const endIndex = Math.min(startIndex + config.itemsPerPage, totalItems);
+            
+            for (let i = startIndex; i < endIndex; i++) {
+                filteredItems[i].classList.remove('hidden');
+            }
+            
+            // 更新分页控件
+            updatePaginationControls(config, totalPages, totalItems);
+        }
+
+        // 更新分页控件
+        function updatePaginationControls(config, totalPages, totalItems) {
+            // 清空页码按钮
+            config.pagesContainer.innerHTML = '';
+            
+            // 添加上一页/下一页按钮状态
+            config.prevBtn.disabled = config.currentPage === 1;
+            config.nextBtn.disabled = config.currentPage === totalPages || totalPages === 0;
+            
+            // 添加页码按钮
+            const maxVisiblePages = 5;
+            let startPage = Math.max(1, config.currentPage - Math.floor(maxVisiblePages / 2));
+            let endPage = Math.min(totalPages, startPage + maxVisiblePages - 1);
+            
+            if (endPage - startPage + 1 < maxVisiblePages) {
+                startPage = Math.max(1, endPage - maxVisiblePages + 1);
+            }
+            
+            for (let i = startPage; i <= endPage; i++) {
+                const pageBtn = document.createElement('button');
+                pageBtn.className = 'pagination-page';
+                pageBtn.textContent = i;
+                if (i === config.currentPage) {
+                    pageBtn.classList.add('active');
+                }
+                
+                pageBtn.addEventListener('click', () => {
+                    config.currentPage = i;
+                    updatePagination(config, 'video');
+                });
+                
+                config.pagesContainer.appendChild(pageBtn);
+            }
+            
+            // 更新信息显示
+            const startItem = totalItems === 0 ? 0 : (config.currentPage - 1) * config.itemsPerPage + 1;
+            const endItem = Math.min(config.currentPage * config.itemsPerPage, totalItems);
+            
+            config.infoContainer.textContent = 
+                `显示 ${startItem}-${endItem} 条，共 ${totalItems} 条`;
+        }
+
+        // 搜索功能
+        function searchVideos() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            paginationConfig.video.searchTerm = searchTerm;
+            paginationConfig.video.currentPage = 1;
+            
+            // 重置分类为全部
+            document.querySelectorAll('.video-tags .tag').forEach(tag => {
+                tag.classList.remove('active');
+                if (tag.dataset.video === 'all') {
+                    tag.classList.add('active');
+                }
+            });
+            paginationConfig.video.currentCategory = 'all';
+            
+            updatePagination(paginationConfig.video, 'video');
+        }
+
+        // 回车搜索
+        document.getElementById('searchInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                searchVideos();
+            }
+        });
+
+        // 视频播放功能
+        document.querySelectorAll('.video-item').forEach(item => {
+            const wrapper = item.querySelector('.video-wrapper');
+            const video = item.querySelector('video');
+            
+            wrapper.addEventListener('click', () => {
+                // 暂停所有其他视频
+                document.querySelectorAll('.video-item').forEach(v => {
+                    if (v !== item) {
+                        const vVideo = v.querySelector('video');
+                        vVideo.pause();
+                        vVideo.removeAttribute('controls');
+                        v.querySelector('.video-play-icon').style.display = 'flex';
+                    }
+                });
+                
+                // 播放当前视频
+                if (video.paused) {
+                    video.play();
+                    video.setAttribute('controls', 'true');
+                    wrapper.querySelector('.video-play-icon').style.display = 'none';
+                } else {
+                    video.pause();
+                    video.removeAttribute('controls');
+                    wrapper.querySelector('.video-play-icon').style.display = 'flex';
+                }
+            });
+            
+            video.addEventListener('ended', () => {
+                video.removeAttribute('controls');
+                wrapper.querySelector('.video-play-icon').style.display = 'flex';
             });
         });
     </script>
